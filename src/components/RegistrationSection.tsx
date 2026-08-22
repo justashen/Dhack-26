@@ -48,26 +48,28 @@ export default function RegistrationSection() {
             viewport={{ once: true, margin: '-80px' }}
           >
             <p className='mb-3 text-sm font-semibold uppercase tracking-wide text-dhack-orange'>
-              Round 01 Submission
+              Round 02 Submission
             </p>
             <h2 className='text-4xl md:text-5xl font-heading font-bold'>
-              Submit your <span className='gradient-text'>Round 01</span> work
+              Submit your <span className='gradient-text'>Round 2</span> work
             </h2>
             <p className='mt-5 max-w-xl text-muted-foreground leading-7'>
-              Registration is closed. Registered teams can now upload their
-              Round 01 Google Drive deliverables before the official deadline.
+              Congratulations to the teams selected for Round 2 of DHACK 2026.
+              Submit your Round 2 solution through the Google Drive submission
+              form before the deadline. Round 2 submissions are open
+              exclusively to teams selected for Round 2.
             </p>
             <div className='mt-5 rounded-lg border border-dhack-teal/25 bg-dhack-teal/10 px-5 py-3 font-semibold text-dhack-teal'>
               Registration Closed
             </div>
             {submissionClosed ? (
               <div className='mt-8 rounded-lg border border-red-400/30 bg-red-500/10 px-5 py-3 font-semibold text-red-300'>
-                Round 01 Submission Closed
+                Round 2 Submission Closed
               </div>
             ) : (
               <Button asChild variant='gradient' size='lg' className='mt-8 gap-2'>
-                <Link href='/round-01-submission'>
-                  Submit Round 01
+                <Link href='/round-02-submission'>
+                  Submit Round 2
                   <ArrowRight className='h-4 w-4' aria-hidden='true' />
                 </Link>
               </Button>
@@ -108,10 +110,10 @@ export default function RegistrationSection() {
                     </p>
                   ) : (
                     <Link
-                      href='/round-01-submission'
+                      href='/round-02-submission'
                       className='mt-4 inline-flex items-center gap-2 text-sm font-medium text-dhack-orange hover:text-dhack-teal'
                     >
-                      Submit Round 01
+                      Submit Round 2
                       <ArrowRight className='h-4 w-4' aria-hidden='true' />
                     </Link>
                   )}

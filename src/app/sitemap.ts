@@ -56,6 +56,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     {
       url: `${baseUrl}/round-01-submission`,
       lastModified: currentDate,
+      changeFrequency: 'monthly',
+      priority: 0.3,
+    },
+    {
+      url: `${baseUrl}/round-02-submission`,
+      lastModified: currentDate,
       changeFrequency: 'daily',
       priority: 0.9,
     },

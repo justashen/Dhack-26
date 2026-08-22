@@ -57,6 +57,7 @@ export async function GET(request: Request) {
           team_name,
           university,
           category,
+          round2_eligible,
           institutions(name, institution_type)
         )
       `
@@ -85,6 +86,7 @@ export async function GET(request: Request) {
           ? sub.teams?.institutions?.name || sub.teams?.university
           : null,
       university: sub.teams?.university,
+      round2_eligible: !!sub.teams?.round2_eligible,
       type: sub.competition_category,
     }));
 

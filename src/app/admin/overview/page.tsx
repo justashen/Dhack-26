@@ -255,6 +255,11 @@ function AdminOverviewContent() {
               Submissions ({submissions.length})
             </button>
           </Link>
+          <Link href='/admin/round2'>
+            <button className='px-4 py-3 font-semibold text-sm lg:text-base rounded-t-lg transition-all duration-300 whitespace-nowrap text-gray-400 hover:text-gray-200 hover:bg-white/5 hover:scale-105 transform-gpu'>
+              Round 2
+            </button>
+          </Link>
           <Link href='/admin/results'>
             <button className='px-4 py-3 font-semibold text-sm lg:text-base rounded-t-lg transition-all duration-300 whitespace-nowrap text-gray-400 hover:text-gray-200 hover:bg-white/5 hover:scale-105 transform-gpu'>
               Results ({results.length})

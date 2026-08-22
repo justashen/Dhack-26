@@ -168,6 +168,7 @@ interface Submission {
   school_name?: string | null;
   university: string;
   registration_id: string;
+  round2_eligible?: boolean;
 }
 
 function AdminSubmissionsContent() {
@@ -331,6 +332,7 @@ function AdminSubmissionsContent() {
                     'team_name',
                     'school_name',
                     'university',
+                    'round2_eligible',
                     'status',
                     'google_drive_link',
                     'submitted_at',
@@ -343,6 +345,7 @@ function AdminSubmissionsContent() {
                     s.team_name,
                     s.school_name || '',
                     s.university,
+                    s.round2_eligible ? 'yes' : 'no',
                     s.status,
                     s.google_drive_link,
                     new Date(s.submitted_at).toISOString(),
@@ -390,6 +393,11 @@ function AdminSubmissionsContent() {
           <Link href='/admin/submissions'>
             <button className='px-4 py-3 font-semibold text-sm lg:text-base rounded-t-lg transition-all duration-300 whitespace-nowrap bg-blue-500/20 text-blue-300 border-b-3 border-blue-400 shadow-sm'>
               Submissions ({submissions.length})
+            </button>
+          </Link>
+          <Link href='/admin/round2'>
+            <button className='px-4 py-3 font-semibold text-sm lg:text-base rounded-t-lg transition-all duration-300 whitespace-nowrap text-gray-400 hover:text-gray-200 hover:bg-white/5 hover:scale-105 transform-gpu'>
+              Round 2
             </button>
           </Link>
           <Link href='/admin/results'>
@@ -512,6 +520,9 @@ function AdminSubmissionsContent() {
                         Round
                       </th>
                       <th className='text-left py-3 px-2 text-gray-100 font-semibold'>
+                        Round 2 Eligible
+                      </th>
+                      <th className='text-left py-3 px-2 text-gray-100 font-semibold'>
                         Status
                       </th>
                       <th className='text-left py-3 px-2 text-gray-100 font-semibold'>
@@ -558,6 +569,17 @@ function AdminSubmissionsContent() {
                         </td>
                         <td className='py-3 px-2 text-gray-300'>
                           Round {submission.round_id}
+                        </td>
+                        <td className='py-3 px-2'>
+                          <span
+                            className={`inline-flex items-center justify-center rounded-md text-xs font-semibold tracking-wide px-3 h-7 min-w-[60px] border ${
+                              submission.round2_eligible
+                                ? 'bg-green-500/10 text-green-300 border-green-700'
+                                : 'bg-gray-500/10 text-gray-400 border-gray-700'
+                            }`}
+                          >
+                            {submission.round2_eligible ? 'Yes' : 'No'}
+                          </span>
                         </td>
                         <td className='py-3 px-2'>
                           <StatusBadge variant={submission.status}>

@@ -83,8 +83,8 @@ export const DHACK_2026_CONFIG = {
   registrationOpenAt: '2026-07-08T00:00:00+05:30',
   registrationCloseAt: '2026-07-26T00:00:00+05:30',
   registrationEnabled: false,
-  countdownTargetAt: '2026-08-03T23:59:59+05:30',
-  currentRound: 'round_01_submission',
+  countdownTargetAt: '2026-08-27T23:59:00+05:30',
+  currentRound: 'round_02_submission',
   maintenanceMode: false,
   maintenanceMessage:
     "We're making DHACK better. Please check back soon.",
@@ -95,15 +95,15 @@ export const DHACK_2026_CONFIG = {
 export const DHACK_2026_SUBMISSION_WINDOWS = [
   {
     round: 1,
-    label: 'Round 1',
+    label: 'Round 01 Submission',
     opens_at: '2026-07-26T00:00:00+05:30',
     closes_at: '2026-08-03T23:59:59+05:30',
   },
   {
     round: 2,
-    label: 'Round 2',
-    opens_at: '2026-08-20T00:00:00+05:30',
-    closes_at: '2026-08-27T23:59:59+05:30',
+    label: 'Round 02 Submission',
+    opens_at: '2026-08-16T00:00:00+05:30',
+    closes_at: '2026-08-27T23:59:00+05:30',
   },
   {
     round: 3,
@@ -173,13 +173,13 @@ export const DHACK_2026_EVENTS = [
   },
   {
     id: 'dhack26-second-round',
-    name: 'Second Round',
-    description: 'Selected teams progress into the second evaluation round.',
+    name: 'Round 02 Submission',
+    description: 'Teams selected for Round 2 submit their Google Drive deliverables through the official Round 2 submission portal.',
     category: 'innovation',
     type: 'wireframe',
-    start_at: '2026-08-23T00:00:00+05:30',
-    end_at: '2026-08-23T23:59:59+05:30',
-    displayDate: '23 August 2026',
+    start_at: '2026-08-16T00:00:00+05:30',
+    end_at: '2026-08-27T23:59:00+05:30',
+    displayDate: '16 August - 27 August 2026',
   },
   {
     id: 'dhack26-final-round',

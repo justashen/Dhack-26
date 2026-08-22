@@ -5,7 +5,7 @@ export const COLORS = {
   accent: '#28A7A9',
 };
 
-export const COUNTDOWN_TARGET = '2026-08-03T23:59:59+05:30';
+export const COUNTDOWN_TARGET = '2026-08-27T23:59:00+05:30';
 
 export const DEV_MODE =
   process.env.NODE_ENV === 'development' ||
@@ -19,8 +19,8 @@ export const ROUND_DATES = {
     description: 'Submit your problem, AI approach, SDG alignment, and concept.',
   },
   round2: {
-    start: '2026-08-20T00:00:00+05:30',
-    end: '2026-08-27T23:59:59+05:30',
+    start: '2026-08-16T00:00:00+05:30',
+    end: '2026-08-27T23:59:00+05:30',
     title: 'Round 2: Wireframes',
     description: 'Submit user flows, wireframes, and early design evidence.',
   },
