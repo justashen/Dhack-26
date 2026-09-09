@@ -35,7 +35,7 @@ const Navbar = () => {
     { name: 'About', href: '#about' },
     { name: 'Categories', href: '#categories' },
     { name: 'Timeline', href: '#timeline' },
-    { name: 'Round 02', href: '/round-02-submission' },
+    { name: 'Final Round', href: '/final-round-submission' },
     { name: 'Prizes', href: '#prizes' },
     { name: 'Gallery', href: '#gallery' },
     { name: 'FAQ', href: '#faq' },

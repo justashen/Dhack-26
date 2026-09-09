@@ -10,7 +10,7 @@ import { GLTFLoader } from 'three/examples/jsm/loaders/GLTFLoader.js';
 
 // Countdown Timer Component
 const CountdownTimer = () => {
-  const [label, setLabel] = useState<string>('Round 02 Submission Deadline');
+  const [label, setLabel] = useState<string>('Final Round Submission Deadline');
   const [closed, setClosed] = useState(false);
   const [targetIso, setTargetIso] = useState(DHACK_2026_CONFIG.countdownTargetAt);
   const [timeLeft, setTimeLeft] = useState({
@@ -44,7 +44,7 @@ const CountdownTimer = () => {
       const difference = target.getTime() - now;
       if (difference <= 0) {
         setClosed(true);
-        setLabel('Round 02 Submission Closed');
+        setLabel('Final Round Submission Closed');
         setTimeLeft({ days: 0, hours: 0, minutes: 0, seconds: 0 });
         clearInterval(timer);
         return;
@@ -66,7 +66,7 @@ const CountdownTimer = () => {
     <div className='mt-6'>
       {closed ? (
         <div className='rounded-lg border border-red-400/30 bg-red-500/10 p-4 text-center font-semibold text-red-300'>
-          Round 02 Submission Closed
+          Final Round Submission Closed
         </div>
       ) : label && (
         <div className='text-center text-sm text-muted-foreground mb-2'>
@@ -316,7 +316,7 @@ const Hero = () => {
 
   const onCtaClick = () => {
     if (submissionClosed) return;
-    window.location.href = '/round-02-submission';
+    window.location.href = '/final-round-submission';
   };
 
   useEffect(() => {
@@ -465,11 +465,11 @@ const Hero = () => {
             disabled={submissionClosed}
             className='text-sm px-8 py-4 '
           >
-            {submissionClosed ? 'Round 2 Submission Closed' : 'Submit Round 2'}
+            {submissionClosed ? 'Final Round Submission Closed' : 'Submit Final Round'}
           </Button>
           <p className='text-center text-xs text-muted-foreground'>
-            Round 2 submissions are open exclusively to teams selected for
-            Round 2.
+            Submit your Final Round project via Google Drive before the
+            deadline.
           </p>
         </div>
 
@@ -675,11 +675,11 @@ const Hero = () => {
                 disabled={submissionClosed}
                 className='text-lg px-8 py-4'
               >
-                {submissionClosed ? 'Round 2 Submission Closed' : 'Submit Round 2'}
+                {submissionClosed ? 'Final Round Submission Closed' : 'Submit Final Round'}
               </Button>
               <p className='mt-3 text-sm text-muted-foreground'>
-                Round 2 submissions are open exclusively to teams selected
-                for Round 2.
+                Submit your Final Round project via Google Drive before the
+                deadline.
               </p>
             </div>
           </div>

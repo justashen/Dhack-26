@@ -9,7 +9,11 @@ import {
   getWindowStatus,
 } from '@/lib/platformConfig';
 
-const ROUND = 2;
+// DHACK 2026 Final Round (Round 3) submissions.
+// Mirrors the Round 02 submission flow (src/app/api/round-02-submit/route.ts)
+// but records round = 3 and does not gate on a team-level eligibility flag,
+// since the Final Round is not restricted the way Round 02 was.
+const ROUND = 3;
 
 const schema = z
   .object({
@@ -38,13 +42,12 @@ type TeamRow = {
   team_id: string;
   team_name: string;
   category: string | null;
-  round2_eligible: boolean;
 };
 
 async function findTeamById(teamId: string): Promise<TeamRow | null> {
   const { data, error } = await supabaseServer
     .from('teams')
-    .select('team_id, team_name, category, round2_eligible')
+    .select('team_id, team_name, category')
     .eq('team_id', teamId.trim().toUpperCase())
     .maybeSingle();
   if (error) throw new Error(error.message);
@@ -54,7 +57,7 @@ async function findTeamById(teamId: string): Promise<TeamRow | null> {
 async function findTeamByName(teamName: string): Promise<TeamRow | null> {
   const { data, error } = await supabaseServer
     .from('teams')
-    .select('team_id, team_name, category, round2_eligible')
+    .select('team_id, team_name, category')
     .ilike('team_name', teamName.trim())
     .limit(1);
   if (error) throw new Error(error.message);
@@ -77,7 +80,7 @@ export async function POST(req: NextRequest) {
       req.headers.get('x-forwarded-for')?.split(',')[0]?.trim() ||
       (req as any).ip ||
       null;
-    const rl = rateLimit('round_02_submit_POST', ip, {
+    const rl = rateLimit('final_round_submit_POST', ip, {
       windowMs: 15 * 60 * 1000,
       max: 5,
     });
@@ -147,16 +150,6 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    if (!team.round2_eligible) {
-      return NextResponse.json(
-        {
-          error:
-            'Your team has not been selected for Round 2 and is not eligible to submit.',
-        },
-        { status: 403 }
-      );
-    }
-
     const windows = await getSubmissionWindows();
     const window = windows.find(
       item =>
@@ -166,7 +159,7 @@ export async function POST(req: NextRequest) {
     );
     if (!window) {
       return NextResponse.json(
-        { error: 'Round 2 submission window is not configured.' },
+        { error: 'Final Round submission window is not configured.' },
         { status: 400 }
       );
     }
@@ -177,8 +170,8 @@ export async function POST(req: NextRequest) {
         {
           error:
             status === 'upcoming'
-              ? `Round 2 submissions open on ${new Date(window.opens_at).toLocaleString()}`
-              : 'Round 2 submission window has closed.',
+              ? `Final Round submissions open on ${new Date(window.opens_at).toLocaleString()}`
+              : 'Final Round submission window has closed.',
         },
         { status: 400 }
       );
@@ -198,7 +191,7 @@ export async function POST(req: NextRequest) {
     }
     if (existing && existing.length > 0) {
       return NextResponse.json(
-        { error: 'Your team has already submitted a Round 2 submission.' },
+        { error: 'Your team has already submitted a Final Round submission.' },
         { status: 409 }
       );
     }
@@ -216,11 +209,7 @@ export async function POST(req: NextRequest) {
       .single();
     if (insertError) {
       return NextResponse.json(
-        {
-          error: /not eligible/i.test(insertError.message)
-            ? 'Your team has not been selected for Round 2 and is not eligible to submit.'
-            : insertError.message,
-        },
+        { error: insertError.message },
         { status: 400 }
       );
     }
@@ -232,7 +221,7 @@ export async function POST(req: NextRequest) {
       status: (submission as any).status,
       submitted_at: (submission as any).submitted_at,
       submission_link: (submission as any).submission_link,
-      message: 'Round 2 submission received successfully.',
+      message: 'Final Round submission received successfully.',
     });
   } catch (error) {
     return NextResponse.json(
@@ -240,7 +229,7 @@ export async function POST(req: NextRequest) {
         error:
           error instanceof Error
             ? error.message
-            : 'Failed to submit Round 2 work',
+            : 'Failed to submit Final Round work',
       },
       { status: 500 }
     );

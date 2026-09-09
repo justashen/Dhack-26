@@ -48,28 +48,28 @@ export default function RegistrationSection() {
             viewport={{ once: true, margin: '-80px' }}
           >
             <p className='mb-3 text-sm font-semibold uppercase tracking-wide text-dhack-orange'>
-              Round 02 Submission
+              Final Round Submission
             </p>
             <h2 className='text-4xl md:text-5xl font-heading font-bold'>
-              Submit your <span className='gradient-text'>Round 2</span> work
+              Submit your <span className='gradient-text'>Final Round</span> work
             </h2>
             <p className='mt-5 max-w-xl text-muted-foreground leading-7'>
-              Congratulations to the teams selected for Round 2 of DHACK 2026.
-              Submit your Round 2 solution through the Google Drive submission
-              form before the deadline. Round 2 submissions are open
-              exclusively to teams selected for Round 2.
+              Congratulations on reaching the Final Round of DHACK 2026.
+              Submit your final project through the Google Drive submission
+              form before the deadline of 10 September 2026, 11:59 PM Sri
+              Lanka time.
             </p>
             <div className='mt-5 rounded-lg border border-dhack-teal/25 bg-dhack-teal/10 px-5 py-3 font-semibold text-dhack-teal'>
               Registration Closed
             </div>
             {submissionClosed ? (
               <div className='mt-8 rounded-lg border border-red-400/30 bg-red-500/10 px-5 py-3 font-semibold text-red-300'>
-                Round 2 Submission Closed
+                Final Round Submission Closed
               </div>
             ) : (
               <Button asChild variant='gradient' size='lg' className='mt-8 gap-2'>
-                <Link href='/round-02-submission'>
-                  Submit Round 2
+                <Link href='/final-round-submission'>
+                  Submit Final Round
                   <ArrowRight className='h-4 w-4' aria-hidden='true' />
                 </Link>
               </Button>
@@ -110,10 +110,10 @@ export default function RegistrationSection() {
                     </p>
                   ) : (
                     <Link
-                      href='/round-02-submission'
+                      href='/final-round-submission'
                       className='mt-4 inline-flex items-center gap-2 text-sm font-medium text-dhack-orange hover:text-dhack-teal'
                     >
-                      Submit Round 2
+                      Submit Final Round
                       <ArrowRight className='h-4 w-4' aria-hidden='true' />
                     </Link>
                   )}

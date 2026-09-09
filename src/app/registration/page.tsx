@@ -21,12 +21,12 @@ export default function RegistrationPage() {
               DHACK&apos;26 <span className='gradient-text'>Registration Closed</span>
             </h1>
             <p className='mx-auto mt-5 max-w-3xl text-muted-foreground leading-7'>
-              New registrations are no longer accepted. Teams selected for
-              Round 2 should use the Round 2 submission portal for
-              deliverables.
+              New registrations are no longer accepted. Teams that reached
+              the Final Round should use the Final Round submission portal
+              for deliverables.
             </p>
             <Button asChild variant='gradient' size='lg' className='mt-8'>
-              <Link href='/round-02-submission'>Go to Round 2 Submission</Link>
+              <Link href='/final-round-submission'>Go to Final Round Submission</Link>
             </Button>
           </div>
 

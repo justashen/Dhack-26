@@ -60,7 +60,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.3,
     },
     {
-      url: `${baseUrl}/round-02-submission`,
+      url: `${baseUrl}/final-round-submission`,
       lastModified: currentDate,
       changeFrequency: 'daily',
       priority: 0.9,

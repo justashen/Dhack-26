@@ -16,10 +16,11 @@ const schema = z
     team_name: z.string().optional().or(z.literal('')),
     submission_link: z
       .string()
-      .url('Please provide a valid Google Drive link.')
+      .min(1, 'Please enter your Google Drive submission link.')
+      .url('Please provide a valid URL.')
       .refine(
         value => value.startsWith('https://drive.google.com/'),
-        'Please provide a valid Google Drive link.'
+        'Please provide a valid Google Drive link (https://drive.google.com/...).'
       ),
   })
   .superRefine((data, ctx) => {
@@ -42,7 +43,7 @@ type SubmissionResult = {
   submission_link: string;
 };
 
-export default function Round02SubmissionForm() {
+export default function FinalRoundSubmissionForm() {
   const [error, setError] = useState<string | null>(null);
   const [windowStatus, setWindowStatus] = useState<
     'upcoming' | 'open' | 'closed'
@@ -73,11 +74,11 @@ export default function Round02SubmissionForm() {
         const res = await fetch('/api/config', { cache: 'no-store' });
         const json = await res.json();
         const windows = json?.submissionWindows || [];
-        const window = windows.find((item: any) => item.round === 2);
+        const window = windows.find((item: any) => item.round === 3);
         if (!window) {
           if (mounted) {
             setWindowStatus('closed');
-            setWindowLabel('Round 2 submission window is not configured.');
+            setWindowLabel('Final Round submission window is not configured.');
           }
           return;
         }
@@ -94,7 +95,7 @@ export default function Round02SubmissionForm() {
             setWindowLabel(`Closes on ${new Date(window.closes_at).toLocaleString()}`);
           } else {
             setWindowStatus('closed');
-            setWindowLabel('Round 2 submission window has closed.');
+            setWindowLabel('Final Round submission window has closed.');
           }
         }
       } catch {
@@ -127,7 +128,7 @@ export default function Round02SubmissionForm() {
       return;
     }
 
-    const res = await fetch('/api/round-02-submit', {
+    const res = await fetch('/api/final-round-submit', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
@@ -161,7 +162,8 @@ export default function Round02SubmissionForm() {
         <CardContent className='space-y-4 pt-6'>
           <div className='rounded-lg border border-dhack-teal/30 bg-dhack-teal/10 p-4'>
             <p className='font-semibold text-dhack-teal'>
-              Round 2 submission submitted successfully!
+              🎉 Congratulations! Your Final Round submission has been
+              successfully received.
             </p>
           </div>
           <dl className='grid gap-3 text-sm sm:grid-cols-2'>
@@ -180,7 +182,9 @@ export default function Round02SubmissionForm() {
             <div>
               <dt className='text-muted-foreground'>Submitted At</dt>
               <dd className='font-medium'>
-                {new Date(result.submitted_at).toLocaleString()}
+                {result.submitted_at
+                  ? new Date(result.submitted_at).toLocaleString()
+                  : '—'}
               </dd>
             </div>
             <div className='sm:col-span-2'>
@@ -215,6 +219,12 @@ export default function Round02SubmissionForm() {
           }`}
         >
           {windowLabel}
+        </div>
+
+        <div className='rounded-lg border border-dhack-orange/30 bg-dhack-orange/10 p-3 text-sm text-dhack-orange'>
+          Make sure your Google Drive file or folder&apos;s sharing setting is
+          set to <span className='font-semibold'>&quot;Anyone with the link can view&quot;</span>{' '}
+          so the organizers can access your submission.
         </div>
 
         <form onSubmit={handleSubmit(onSubmit)} className='space-y-6'>
@@ -285,7 +295,7 @@ export default function Round02SubmissionForm() {
             disabled={isSubmitting || windowStatus !== 'open'}
             className='w-full'
           >
-            {isSubmitting ? 'Submitting...' : 'Submit Round 2'}
+            {isSubmitting ? 'Submitting...' : 'Submit Final Round'}
           </Button>
         </form>
       </CardContent>

@@ -7,8 +7,8 @@ import Footer from '@/components/Footer';
 import ErrorBoundary from '@/components/ErrorBoundary';
 import { Card, CardContent } from '@/components/ui/card';
 
-const Round02SubmissionForm = dynamic(
-  () => import('@/components/forms/Round02SubmissionForm'),
+const FinalRoundSubmissionForm = dynamic(
+  () => import('@/components/forms/FinalRoundSubmissionForm'),
   {
     ssr: false,
     loading: () => (
@@ -19,7 +19,7 @@ const Round02SubmissionForm = dynamic(
   }
 );
 
-export default function RoundTwoSubmissionPage() {
+export default function FinalRoundSubmissionPage() {
   useEffect(() => {
     document.body.classList.add('submit-page');
     return () => document.body.classList.remove('submit-page');
@@ -32,21 +32,21 @@ export default function RoundTwoSubmissionPage() {
         <div className='mx-auto max-w-3xl'>
           <div className='mb-10 text-center'>
             <p className='mb-3 text-sm font-semibold uppercase tracking-wide text-dhack-orange'>
-              Round 02 Submission
+              Final Round Submission
             </p>
             <h1 className='text-4xl md:text-5xl font-heading font-bold'>
-              DHACK 2026 — <span className='gradient-text'>Round 2 Submission</span>
+              DHACK 2026 — <span className='gradient-text'>Final Round Submission</span>
             </h1>
             <p className='mx-auto mt-5 max-w-2xl text-muted-foreground leading-7'>
-              Congratulations to the teams selected for Round 2 of DHACK
-              2026. Submit your Round 2 solution through the submission form
-              below by providing the Google Drive link containing your work,
-              before the deadline. Enter your Team ID or Team Name to
-              identify your team.
+              Congratulations on making it to the Final Round of DHACK 2026.
+              Submit your final project through the form below by providing
+              the Google Drive link containing your work, before the
+              deadline. Enter your Team ID or Team Name to identify your
+              team.
             </p>
             <p className='mx-auto mt-3 max-w-2xl text-sm text-muted-foreground'>
-              Round 2 submissions are open exclusively to teams selected for
-              Round 2.
+              The Final Round submission deadline is 10 September 2026, 11:59
+              PM Sri Lanka time.
             </p>
           </div>
 
@@ -60,7 +60,7 @@ export default function RoundTwoSubmissionPage() {
                     </div>
                   }
                 >
-                  <Round02SubmissionForm />
+                  <FinalRoundSubmissionForm />
                 </Suspense>
               </ErrorBoundary>
             </CardContent>

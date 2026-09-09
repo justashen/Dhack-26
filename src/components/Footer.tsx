@@ -41,7 +41,7 @@ const Footer = () => {
   ];
 
   const resourceLinks = [
-    { name: 'Round 02 Submission', href: '/round-02-submission' },
+    { name: 'Final Round Submission', href: '/final-round-submission' },
     { name: 'Prizes', href: '#prizes' },
     { name: 'Gallery', href: '#gallery' },
     { name: 'FAQ', href: '#faq' },

@@ -13,6 +13,17 @@ const nextConfig = {
   experimental: {
     optimizePackageImports: ['lucide-react', 'framer-motion'],
   },
+  // Round 02 submissions have closed; send old links/bookmarks to the
+  // active Final Round (Round 3) submission page instead of a 404.
+  async redirects() {
+    return [
+      {
+        source: '/round-02-submission',
+        destination: '/final-round-submission',
+        permanent: false,
+      },
+    ];
+  },
   // Security headers for production
   async headers() {
     return [

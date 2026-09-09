@@ -83,8 +83,8 @@ export const DHACK_2026_CONFIG = {
   registrationOpenAt: '2026-07-08T00:00:00+05:30',
   registrationCloseAt: '2026-07-26T00:00:00+05:30',
   registrationEnabled: false,
-  countdownTargetAt: '2026-08-27T23:59:00+05:30',
-  currentRound: 'round_02_submission',
+  countdownTargetAt: '2026-09-10T23:59:00+05:30',
+  currentRound: 'final_round_submission',
   maintenanceMode: false,
   maintenanceMessage:
     "We're making DHACK better. Please check back soon.",
@@ -107,9 +107,9 @@ export const DHACK_2026_SUBMISSION_WINDOWS = [
   },
   {
     round: 3,
-    label: 'Final Round',
-    opens_at: '2026-09-10T00:00:00+05:30',
-    closes_at: '2026-09-12T23:59:59+05:30',
+    label: 'Final Round Submission',
+    opens_at: '2026-09-09T00:00:00+05:30',
+    closes_at: '2026-09-10T23:59:00+05:30',
   },
 ] as const;
 
@@ -183,13 +183,14 @@ export const DHACK_2026_EVENTS = [
   },
   {
     id: 'dhack26-final-round',
-    name: 'Final Round',
-    description: 'Final competition round for top DHACK 2026 teams.',
+    name: 'Final Round Submission',
+    description:
+      'Finalist teams submit their final project deliverables through the official Final Round submission portal.',
     category: 'innovation',
     type: 'final',
-    start_at: '2026-09-12T00:00:00+05:30',
-    end_at: '2026-09-12T23:59:59+05:30',
-    displayDate: '12 September 2026',
+    start_at: '2026-09-09T00:00:00+05:30',
+    end_at: '2026-09-10T23:59:00+05:30',
+    displayDate: '09 - 10 September 2026',
   },
   {
     id: 'dhack26-rebrand-hackathon',

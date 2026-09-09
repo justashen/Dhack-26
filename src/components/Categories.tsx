@@ -57,10 +57,10 @@ export default function Categories() {
                   ))}
                 </ul>
                 <Link
-                  href='/round-02-submission'
+                  href='/final-round-submission'
                   className='mt-6 inline-flex items-center gap-2 text-sm font-semibold text-dhack-orange transition-colors hover:text-dhack-teal'
                 >
-                  Submit Round 2
+                  Submit Final Round
                   <ArrowRight className='h-4 w-4' aria-hidden='true' />
                 </Link>
               </motion.article>
